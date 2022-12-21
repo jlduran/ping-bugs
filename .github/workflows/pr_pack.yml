@@ -28,7 +28,7 @@ jobs:
       # XXX FreeBSD without the polemic commits
     - name: Test Apple/Darwin
       run: |
-        cc pr_iph/apple_pr_pack.c
+        cc pr_pack/apple_pr_pack.c
         ./a.out
 
     - name: Test MWE
