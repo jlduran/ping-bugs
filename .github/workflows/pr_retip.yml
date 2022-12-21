@@ -1,0 +1,25 @@
+name: pr_retip
+
+on:
+  pull_request:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  test:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Test reference
+      run: |
+        cc pr_retip/reference_pr_retip.c
+        ./a.out
+
+    - name: Test MWE
+      run: |
+        cc pr_retip/sa_22_15_pr_retip.c
+        ./a.out
