@@ -1,0 +1,25 @@
+name: pr_pack
+
+on:
+  pull_request:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  test:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Test reference
+      run: |
+        cc pr_pack/reference_pr_pack.c
+        ./a.out
+
+    - name: Test MWE
+      run: |
+        cc pr_pack/hlen_overflow_full.c
+        ./a.out

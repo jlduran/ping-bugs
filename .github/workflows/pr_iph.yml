@@ -1,0 +1,25 @@
+name: pr_iph
+
+on:
+  pull_request:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  test:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Test reference
+      run: |
+        cc pr_iph/reference_pr_iph.c
+        ./a.out
+
+    - name: Test MWE
+      run: |
+        cc pr_iph/failing_test_D37210.c
+        ./a.out
