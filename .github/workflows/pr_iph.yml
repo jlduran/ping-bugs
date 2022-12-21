@@ -20,6 +20,7 @@ jobs:
         ./a.out
 
       # XXX: Upstream flag bug
+      # XXX: Values are in network order
     - name: Test OpenBSD
       run: |
         cc pr_iph/openbsd_pr_iph.c
