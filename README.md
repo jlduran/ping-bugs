@@ -3,7 +3,7 @@
 ## pr_iph
 
 To generate an ICMP host unreachable packet (ICMP type 3, code 1) with
-the Don't Fragment bit set:
+40 NOP options and the Don't Fragment bit set in the original IP header:
 
     # python pinger.py --iface tun0 \
       --src 192.0.2.1 --dst 192.0.2.2 \
