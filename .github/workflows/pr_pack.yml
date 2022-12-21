@@ -25,6 +25,12 @@ jobs:
         cc pr_pack/openbsd_pr_pack.c
         ./a.out
 
+      # XXX FreeBSD without the polemic commits
+    - name: Test Apple/Darwin
+      run: |
+        cc pr_iph/apple_pr_pack.c
+        ./a.out
+
     - name: Test MWE
       run: |
         cc pr_pack/hlen_overflow_full.c

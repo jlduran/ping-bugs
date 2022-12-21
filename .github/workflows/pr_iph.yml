@@ -26,6 +26,12 @@ jobs:
         cc pr_iph/openbsd_pr_iph.c
         ./a.out
 
+      # XXX FreeBSD without the polemic commits
+    - name: Test Apple/Darwin
+      run: |
+        cc pr_iph/apple_pr_iph.c
+        ./a.out
+
     - name: Test MWE
       run: |
         cc pr_iph/failing_test_D37210.c
