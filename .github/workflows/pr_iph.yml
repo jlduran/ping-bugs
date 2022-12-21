@@ -19,6 +19,12 @@ jobs:
         cc pr_iph/reference_pr_iph.c
         ./a.out
 
+      # XXX: Upstream flag bug
+    - name: Test OpenBSD
+      run: |
+        cc pr_iph/openbsd_pr_iph.c
+        ./a.out
+
     - name: Test MWE
       run: |
         cc pr_iph/failing_test_D37210.c

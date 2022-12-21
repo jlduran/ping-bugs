@@ -19,6 +19,12 @@ jobs:
         cc pr_pack/reference_pr_pack.c
         ./a.out
 
+    # XXX upstream prepend "0x"
+    - name: Test OpenBSD
+      run: |
+        cc pr_pack/openbsd_pr_pack.c
+        ./a.out
+
     - name: Test MWE
       run: |
         cc pr_pack/hlen_overflow_full.c
