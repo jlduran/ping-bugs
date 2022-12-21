@@ -240,8 +240,7 @@ main(void)
 			break;
 		case IPOPT_LSRR:
 		case IPOPT_SSRR:
-			(void)printf(*cp == IPOPT_LSRR ?
-			    "\nLSRR: " : "\nSSRR: ");
+			printf(*cp == IPOPT_LSRR ? "\nLSRR: " : "\nSSRR: ");
 			j = cp[IPOPT_OLEN] - IPOPT_MINOFF + 1;
 			hlen -= 2;
 			cp += 2;
@@ -250,19 +249,18 @@ main(void)
 				for (;;) {
 					bcopy(++cp, &ina.s_addr, INADDR_LEN);
 					if (ina.s_addr == 0)
-						(void)printf("\t0.0.0.0");
+						printf("\t0.0.0.0");
 					else
-						(void)printf("\t%s",
-						     inet_ntoa(ina));
+						printf("\t%s", inet_ntoa(ina));
 					hlen -= INADDR_LEN;
 					cp += INADDR_LEN - 1;
 					j -= INADDR_LEN;
 					if (j < INADDR_LEN)
 						break;
-					(void)putchar('\n');
+					putchar('\n');
 				}
 			} else
-				(void)printf("\t(truncated route)\n");
+				printf("\t(truncated route)\n");
 			break;
 		case IPOPT_RR:
 			j = cp[IPOPT_OLEN];		/* get length */
@@ -279,43 +277,42 @@ main(void)
 			if (i == old_rrlen
 			    && !bcmp((char *)cp, old_rr, i)
 			    && 1) {
-				(void)printf("\t(same route)");
+				printf("\t(same route)");
 				hlen -= i;
 				cp += i;
 				break;
 			}
 			old_rrlen = i;
 			bcopy((char *)cp, old_rr, i);
-			(void)printf("\nRR: ");
+			printf("\nRR: ");
 			if (i >= INADDR_LEN &&
 			    i <= hlen - (int)sizeof(struct ip)) {
 				for (;;) {
 					bcopy(++cp, &ina.s_addr, INADDR_LEN);
 					if (ina.s_addr == 0)
-						(void)printf("\t0.0.0.0");
+						printf("\t0.0.0.0");
 					else
-						(void)printf("\t%s",
-						     inet_ntoa(ina));
+						printf("\t%s", inet_ntoa(ina));
 					hlen -= INADDR_LEN;
 					cp += INADDR_LEN - 1;
 					i -= INADDR_LEN;
 					if (i < INADDR_LEN)
 						break;
-					(void)putchar('\n');
+					putchar('\n');
 				}
 			} else
-				(void)printf("\t(truncated route)");
+				printf("\t(truncated route)");
 			break;
 		case IPOPT_NOP:
-			(void)printf("\nNOP");
+			printf("\nNOP");
 			break;
 		default:
-			(void)printf("\nunknown option 0x%x", *cp);
+			printf("\nunknown option 0x%x", *cp);
 			break;
 		}
 	if (1) {
-		(void)putchar('\n');
-		(void)fflush(stdout);
+		putchar('\n');
+		fflush(stdout);
 	}
 
 	return (0);
