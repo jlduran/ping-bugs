@@ -142,7 +142,7 @@ def generate_ip_options(opts):
         options=sc.IPOption_SSRR(routers=routers)
     elif opts == "SSRR-trunc":
         subprocess.run(["sysctl", "net.inet.ip.process_options=0"], check=True)
-        options=sc.IPOption_SSRR(length=3, routers=routers)
+        options=sc.IPOption_SSRR(length=3, routers=routers_zero)
     elif opts == "unk":
         subprocess.run(["sysctl", "net.inet.ip.process_options=0"], check=True)
         options=sc.IPOption(b"\x9f")
