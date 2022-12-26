@@ -61,7 +61,8 @@ def parse_args():
     parser.add_argument("--icmp_mask", type=str, default="0.0.0.0",
                         help="ICMP address mask")
     parser.add_argument("--request", type=str, default="echo",
-                        help="Request type (echo, mask, timestamp)")
+                        choices=["echo", "mask", "timestamp"],
+                        help="Request type")
     # Miscellaneous arguments
     parser.add_argument("--count", type=int, default=1,
                         help="Number of packets to send")
